@@ -50,7 +50,7 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:layout_height="match_parent"
-                android:text="分类"/>
+                android:text="分类."/>
 
 
             <RadioButton
