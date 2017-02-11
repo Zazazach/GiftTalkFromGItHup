@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.99">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:src="@mipmap/logo_title_c"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="6.42"
+            android:drawableLeft="@mipmap/nav_bar_icon_search_dark"
+            android:layout_height="match_parent"
+            android:drawablePadding="5dp"
+            android:background="@null"
+            android:hint="选份走心好礼送给Ta"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1.96"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_gift_send_remind"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.67"
+        android:background="#f88">
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

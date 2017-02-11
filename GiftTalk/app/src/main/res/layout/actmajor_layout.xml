@@ -5,60 +5,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="lanou.com.gifttalk.ActHomePage">
+    tools:context="lanou.com.gifttalk.activity.ActMajor">
 
     <FrameLayout
+        android:id="@+id/fl_actmajor"
         android:layout_width="match_parent"
         android:layout_weight="8.5"
         android:layout_height="0dp"></FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="1.1"
+        android:layout_weight="0.9"
         android:layout_height="0dp">
 
 
         <RadioGroup
-            android:background="#f88"
+            android:id="@+id/rg_actmajor"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
             <RadioButton
+                android:id="@+id/rb_home"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:button="@null"
                 android:layout_height="match_parent"
-                android:text="首页"/>
+                android:checked="true"
+                android:drawableTop="@drawable/actmajor_home_rb"
+                android:text="首页"
+                style="@style/actmajor_publicdata"
+                />
 
             <RadioButton
+                android:id="@+id/rb_item"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:button="@null"
                 android:layout_height="match_parent"
-                android:text="榜单"/>
+                android:drawableTop="@drawable/actmajor_item_rb"
+                android:text="榜单"
+                android:gravity="center_horizontal"
+                style="@style/actmajor_publicdata"
+                />
 
             <RadioButton
+                android:id="@+id/rb_store"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:button="@null"
                 android:layout_height="match_parent"
-                android:text="商店"/>
+                android:drawableTop="@drawable/actmajor_store_rb"
+                android:text="商店"
+                style="@style/actmajor_publicdata"/>
 
             <RadioButton
+                android:id="@+id/rb_classify"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:button="@null"
                 android:layout_height="match_parent"
-                android:text="分类."/>
+                android:drawableTop="@drawable/actmjor_classify_rb"
+                android:text="分类"
+                style="@style/actmajor_publicdata"/>
 
 
             <RadioButton
+                android:id="@+id/rb_mine"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:button="@null"
                 android:layout_height="match_parent"
-                android:text="我的"/>
+                android:drawableTop="@drawable/actmajor_mine_rb"
+                android:text="我的"
+                style="@style/actmajor_publicdata" />
 
 
         </RadioGroup>
