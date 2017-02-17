@@ -4,7 +4,46 @@
     android:layout_height="match_parent"
     >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="9dp"
+        android:orientation="horizontal">
 
+        <EditText
+            android:id="@+id/et_fragmentstore_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:layout_marginLeft="15dp"
+            android:drawableLeft="@mipmap/nav_bar_icon_search_dark"
+            android:paddingLeft="60dp"
+            android:hint="选份走心好礼送给Ta"
+            android:drawablePadding="10dp"
+            android:background="@drawable/fragmenthome_edittext"
+            />
+
+        <ImageView
+            android:id="@+id/im_fragmentstore_layout"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:src="@mipmap/icon_cart_black"
+            android:scaleType="center"
+            />
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_fragmentstore_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9.9">
+
+    </android.support.v7.widget.RecyclerView>
 
 
 

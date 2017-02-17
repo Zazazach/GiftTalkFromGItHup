@@ -2,7 +2,6 @@ package lanou.com.gifttalk.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +10,10 @@ import android.widget.RadioGroup;
 
 import lanou.com.gifttalk.R;
 import lanou.com.gifttalk.fragment.FragmentClassify;
-import lanou.com.gifttalk.fragment.FragmentHome;
-import lanou.com.gifttalk.fragment.FragmentItem;
+import lanou.com.gifttalk.fragment.homepage.FragmentHome;
+import lanou.com.gifttalk.fragment.itempage.FragmentItem;
 import lanou.com.gifttalk.fragment.FragmentMine;
-import lanou.com.gifttalk.fragment.FragmentStore;
+import lanou.com.gifttalk.fragment.storepage.FragmentStore;
 
 /**
  * Created by dllo on 17/2/10.
@@ -32,9 +31,12 @@ public class ActMajor extends AppCompatActivity implements RadioGroup.OnCheckedC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actmajor_layout);
         radioGroup= (RadioGroup) findViewById(R.id.rg_actmajor);
+        home= (RadioButton) findViewById(R.id.rb_home);
+
         radioGroup.setOnCheckedChangeListener(this);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fl_actmajor,new FragmentHome());
+        fragmentTransaction.commit();
 
     }
 

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     >
 
+    <!--固定 标头-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -22,9 +23,12 @@
             android:layout_weight="6.42"
             android:drawableLeft="@mipmap/nav_bar_icon_search_dark"
             android:layout_height="match_parent"
-            android:drawablePadding="5dp"
-            android:background="@null"
-            android:hint="选份走心好礼送给Ta"/>
+            android:drawablePadding="@dimen/fragmenthome_ed_paddingdrawable"
+            android:background="@drawable/fragmenthome_edittext"
+            android:hint="选份走心好礼送给Ta"
+            android:textSize="@dimen/fragmenthome_ed_textsize"
+            ></EditText>
+
 
         <ImageView
             android:layout_width="0dp"
@@ -36,21 +40,35 @@
     </LinearLayout>
 
 
+    <!--滑动标题 每日推荐 TOP100...-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.67"
         android:background="#f88">
 
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tl_fragmenthome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+        </android.support.design.widget.TabLayout>
 
     </LinearLayout>
 
 
+    <!--本页面主题 大幅篇章面ViewPager-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10">
 
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_fragmenthome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
 
     </LinearLayout>
 

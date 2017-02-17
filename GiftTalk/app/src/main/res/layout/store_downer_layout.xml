@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="9dp">
+
+    <TextView
+        android:id="@+id/tv_store_downer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="推荐礼物"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:drawableLeft="@mipmap/line"
+        android:drawableRight="@mipmap/line"
+        android:drawablePadding="10dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+         />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_store_downer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>

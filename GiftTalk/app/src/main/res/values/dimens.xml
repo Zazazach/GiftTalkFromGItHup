@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="actmajor_rb_textsize">10sp</dimen>
     <dimen name="actmajor_rb_paddingdata">9.2dp</dimen>
+    <dimen name="fragmenthome_ed_paddingdrawable">8dp</dimen>
+    <dimen name="fragmenthome_ed_textsize">15sp</dimen>
 </resources>
