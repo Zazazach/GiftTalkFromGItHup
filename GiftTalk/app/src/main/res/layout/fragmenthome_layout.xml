@@ -19,6 +19,7 @@
             android:src="@mipmap/logo_title_c"/>
 
         <EditText
+            android:id="@+id/et_home"
             android:layout_width="0dp"
             android:layout_weight="6.42"
             android:drawableLeft="@mipmap/nav_bar_icon_search_dark"

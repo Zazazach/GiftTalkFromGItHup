@@ -6,7 +6,7 @@ import java.util.List;
  * Created by dllo on 17/2/16.
  */
 
-public class StoreBean {
+public class StoreUpperBean {
 
     /**
      * code : 200

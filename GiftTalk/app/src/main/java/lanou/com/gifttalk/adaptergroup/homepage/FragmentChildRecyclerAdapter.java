@@ -30,16 +30,18 @@ public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHol
     private ImageView oneIv,twoIv,threeIv,fourIv,fiveIv,sixIv;
 
     private int RUNNING=1;
-    private int NOUMAL=2;
+    private int NORMAL =2;
 
 
 
     public void setPicesList(ArrayList<String> picesList) {
         this.picesList = picesList;
+        notifyDataSetChanged();
     }
 
     public void setIdType(int idType) {
         this.idType = idType;
+        notifyDataSetChanged();
     }
 
     public void setImageUrls(ArrayList<String> imageUrls) {
@@ -76,34 +78,35 @@ public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHol
 
             holder.setBanner(R.id.banner_headview, RUNNING_PIC);
 
-            holder.whriteImage(picesList.get(0),R.id.iv_one);
-            holder.whriteImage(picesList.get(1),R.id.iv_two);
-            holder.whriteImage(picesList.get(2),R.id.iv_three);
-            holder.whriteImage(picesList.get(3),R.id.iv_four);
-            holder.whriteImage(picesList.get(4),R.id.iv_five);
-            holder.whriteImage(picesList.get(5),R.id.iv_six);
+            holder.drawImage(picesList.get(0),R.id.iv_one);
+            holder.drawImage(picesList.get(1),R.id.iv_two);
+            holder.drawImage(picesList.get(2),R.id.iv_three);
+            holder.drawImage(picesList.get(3),R.id.iv_four);
+            holder.drawImage(picesList.get(4),R.id.iv_five);
+            holder.drawImage(picesList.get(5),R.id.iv_six);
 
 
 
 
-        } else if (itemType==NOUMAL &&idType==0){
-            holder.whriteText(list.get(position-1).getAuthor().getNickname(), R.id.tv_author_fragmentchild_line);
-            holder.whriteText(list.get(position-1).getAuthor().getIntroduction(), R.id.tv_interduction_fragmentchild_line);
-            holder.whriteText(list.get(position-1).getIntroduction(), R.id.tv_description_fragmentchild_line);
-            holder.whriteText(list.get(position-1).getTitle(), R.id.tv_title_fragmentchild_line);
-            holder.whriteText(""+list.get(position-1).getLikes_count(),R.id.tv_like__fragmentchild_line);
-            holder.whriteImage(list.get(position-1).getCover_image_url(), R.id.iv_cover_fragmentchild_line);
+        } else if (itemType== NORMAL &&idType==0){
+            holder.writeText(list.get(position-1).getAuthor().getNickname(), R.id.tv_author_fragmentchild_line);
+            holder.writeText(list.get(position-1).getAuthor().getIntroduction(), R.id.tv_interduction_fragmentchild_line);
+            holder.writeText(list.get(position-1).getIntroduction(), R.id.tv_description_fragmentchild_line);
+            holder.writeText(list.get(position-1).getTitle(), R.id.tv_title_fragmentchild_line);
+            holder.writeText(""+list.get(position-1).getLikes_count(),R.id.tv_like__fragmentchild_line);
+            holder.drawImage(list.get(position-1).getCover_image_url(), R.id.iv_cover_fragmentchild_line);
+            holder.drawImage(list.get(position-1).getAuthor().getAvatar_url(),R.id.iv_fragmentchild_line);
 
         }else {
-            holder.whriteText(list.get(position).getAuthor().getNickname(), R.id.tv_author_fragmentchild_line);
-            holder.whriteText(list.get(position).getAuthor().getIntroduction(), R.id.tv_interduction_fragmentchild_line);
-            holder.whriteText(list.get(position).getIntroduction(), R.id.tv_description_fragmentchild_line);
-            holder.whriteText(list.get(position).getTitle(), R.id.tv_title_fragmentchild_line);
-
-            holder.whriteImage(list.get(position).getCover_image_url(), R.id.iv_cover_fragmentchild_line);
+            holder.writeText(list.get(position).getAuthor().getNickname(), R.id.tv_author_fragmentchild_line);
+            holder.writeText(list.get(position).getAuthor().getIntroduction(), R.id.tv_interduction_fragmentchild_line);
+            holder.writeText(list.get(position).getIntroduction(), R.id.tv_description_fragmentchild_line);
+            holder.writeText(list.get(position).getTitle(), R.id.tv_title_fragmentchild_line);
+            holder.drawImage(list.get(position).getAuthor().getAvatar_url(),R.id.iv_fragmentchild_line);
+            holder.drawImage(list.get(position).getCover_image_url(), R.id.iv_cover_fragmentchild_line);
 
         }
-//      holder.whriteImage(list.get(position).getAuthor().getAvatar_url(),R.id.iv_fragmentchild_line);
+//      holder.drawImage(list.get(position).getAuthor().getAvatar_url(),R.id.iv_fragmentchild_line);
 
     }
 
@@ -113,10 +116,10 @@ public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHol
             if (position==0){
                 return RUNNING;
             }else {
-                return NOUMAL;
+                return NORMAL;
             }
         }else {
-            return NOUMAL;
+            return NORMAL;
         }
 
     }

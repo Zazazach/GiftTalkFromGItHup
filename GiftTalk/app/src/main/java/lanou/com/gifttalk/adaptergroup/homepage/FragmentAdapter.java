@@ -1,4 +1,4 @@
-package lanou.com.gifttalk.adaptergroup;
+package lanou.com.gifttalk.adaptergroup.homepage;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

@@ -37,6 +37,7 @@
     </LinearLayout>
 
 
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_fragmentstore_layout"
         android:layout_width="match_parent"
@@ -44,6 +45,8 @@
         android:layout_weight="9.9">
 
     </android.support.v7.widget.RecyclerView>
+
+
 
 
 

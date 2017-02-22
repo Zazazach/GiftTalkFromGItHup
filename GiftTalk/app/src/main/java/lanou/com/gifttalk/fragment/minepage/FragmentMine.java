@@ -1,4 +1,4 @@
-package lanou.com.gifttalk.fragment;
+package lanou.com.gifttalk.fragment.minepage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,13 +13,13 @@ import lanou.com.gifttalk.R;
  * Created by dllo on 17/2/11.
  */
 
-public class FragmentClassify extends Fragment {
+public class FragmentMine extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragmentclassify_layout,container,false);
+        View view=inflater.inflate(R.layout.mine_layout,container,false);
 
         return view;
 

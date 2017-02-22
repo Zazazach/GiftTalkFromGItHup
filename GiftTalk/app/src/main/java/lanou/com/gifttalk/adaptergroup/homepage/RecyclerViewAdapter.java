@@ -31,7 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private ArrayList<String> imageUrls;
 
     private int RUNNING=1;
-    private int NOUMAL=2;
+    private int NORMAL =2;
     private Inner inner;
 
     public void setIdType(int idType) {
@@ -80,8 +80,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
 
 
-        }else if (idType==0&&type==NOUMAL){
+        }else if (idType==0&&type== NORMAL){
             Glide.with(context).load(imageUrls.get(position-1)).into(inner.cover);
+
             inner.descrpection.setText(list.get(position-1).getIntroduction());
             inner.intro.setText(list.get(position-1).getAuthor().getIntroduction());
             inner.nickename.setText(list.get(position-1).getAuthor().getNickname());
@@ -91,11 +92,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             if (imageUrls!= null){
 
                 Glide.with(context).load(imageUrls.get(position)).into(inner.cover);
+
             }
             inner.descrpection.setText(list.get(position).getIntroduction());
             inner.intro.setText(list.get(position).getAuthor().getIntroduction());
             inner.nickename.setText(list.get(position).getAuthor().getNickname());
             inner.title.setText(list.get(position).getTitle());
+
         }
 
     }
@@ -111,10 +114,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             if (position==0){
                 return RUNNING;
             }else {
-                return NOUMAL;
+                return NORMAL;
             }
         }else {
-            return NOUMAL;
+            return NORMAL;
         }
 
     }
@@ -123,7 +126,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     class Inner extends RecyclerView.ViewHolder{
 
         TextView nickename,intro,title,descrpection;
-        ImageView cover;
+        ImageView cover,icon;
         Banner banner;
         public Inner(View itemView) {
             super(itemView);
@@ -133,6 +136,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             descrpection= (TextView) itemView.findViewById(R.id.tv_description_fragmentchild_line);
             cover= (ImageView) itemView.findViewById(R.id.iv_cover_fragmentchild_line);
             banner= (Banner) itemView.findViewById(R.id.banner_headview);
+            icon= (ImageView) itemView.findViewById(R.id.iv_fragmentchild_line);
         }
     }
 

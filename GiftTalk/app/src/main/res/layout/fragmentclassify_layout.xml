@@ -2,9 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f88"
     >
 
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout_classify"
+        android:layout_width="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="40dp"
+        android:layout_marginBottom="7dp">
+    </android.support.design.widget.TabLayout>
+
+    <EditText
+        android:id="@+id/et_classify"
+        android:layout_width="340dp"
+        android:layout_height="27dp"
+        android:layout_gravity="center"
+        android:hint="搜索单品、攻略"
+        android:textSize="12sp"
+        android:drawablePadding="5dp"
+        android:paddingLeft="120dp"
+        android:background="@drawable/fragmenthome_edittext"
+        android:drawableLeft="@mipmap/nav_bar_icon_search_dark"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_classify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v4.view.ViewPager>
 
 
 

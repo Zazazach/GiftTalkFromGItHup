@@ -4,12 +4,18 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp">
 
+    <!--自定义view SquaringDrawable cannot be cast to android.graphics.drawable.BitmapDrawable     (CircleImage.java:44)-->
+    <!--<lanou.com.gifttalk.activity.homepage.CircleImage-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
     <ImageView
         android:id="@+id/iv_fragmentchild_line"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="#88f"
         android:src="@mipmap/ic_launcher"
-        android:scaleType="fitXY"/>
+        />
+
 
     <TextView
         android:id="@+id/tv_author_fragmentchild_line"

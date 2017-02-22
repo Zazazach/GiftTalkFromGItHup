@@ -26,7 +26,7 @@ import lanou.com.gifttalk.parser.ParserTool;
  */
 
 public class MyViewHolder extends RecyclerView.ViewHolder {
-    private  static View mView;
+    private View mView;
     private SparseArray<View> sparseArray;
     private Context context;
     private ArrayList<String> list;
@@ -48,6 +48,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
 
         return holder;
     }
+
     public  <T extends View> T getView(int id){
         View v=sparseArray.get(id);
         if (v==null){
@@ -59,7 +60,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
 
 
 
-    public MyViewHolder whriteText(String content,int id){
+    public MyViewHolder writeText(String content, int id){
         TextView textView=getView(id);
         if (content!=null){
             textView.setText(content);
@@ -67,13 +68,16 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public MyViewHolder whriteImage(String url,int id){
+    public MyViewHolder drawImage(String url, int id){
         ImageView imageView=getView(id);
+
         if (url!=null){
             Glide.with(context).load(url).into(imageView);
         }
         return this;
     }
+
+
 
 
 
@@ -109,7 +113,11 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public static View getmView(){
+//    public static View getmView(){
+//        return mView;
+//    }
+
+    public View getLineView(){
         return mView;
     }
 

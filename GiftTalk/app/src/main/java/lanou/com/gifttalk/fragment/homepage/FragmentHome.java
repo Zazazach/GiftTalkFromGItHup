@@ -1,5 +1,6 @@
 package lanou.com.gifttalk.fragment.homepage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -9,11 +10,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
 import lanou.com.gifttalk.R;
-import lanou.com.gifttalk.adaptergroup.FragmentAdapter;
+import lanou.com.gifttalk.activity.homepage.SearchAct;
+import lanou.com.gifttalk.adaptergroup.homepage.FragmentAdapter;
 import lanou.com.gifttalk.bean.homepage.FRChildBean;
 import lanou.com.gifttalk.bean.homepage.FRTitleBean;
 import lanou.com.gifttalk.finaldata.Http;
@@ -29,6 +32,7 @@ public class FragmentHome extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private FRChildBean bean;
+    private EditText searchEt;
 
     private FragmentAdapter adapter;
     private View v;
@@ -41,6 +45,7 @@ public class FragmentHome extends Fragment {
         v = inflater.inflate(R.layout.fragmenthome_layout, container, false);
         viewPager = (ViewPager) v.findViewById(R.id.vp_fragmenthome);
         tabLayout= (TabLayout) v.findViewById(R.id.tl_fragmenthome);
+        searchEt= (EditText) v.findViewById(R.id.et_home);
         return v;
     }
 
@@ -79,6 +84,17 @@ public class FragmentHome extends Fragment {
 
         });
 
+        //————————————————————————————上方搜索
+        searchEt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getActivity(), SearchAct.class));
+
+
+
+            }
+        });
 
     }
 

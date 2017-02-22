@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lanou.com.gifttalk.R;
-import lanou.com.gifttalk.adaptergroup.FragmentAdapter;
+import lanou.com.gifttalk.adaptergroup.homepage.FragmentAdapter;
 import lanou.com.gifttalk.adaptergroup.homepage.FragmentChildRecyclerAdapter;
 import lanou.com.gifttalk.bean.homepage.FHRuningPicBean;
 import lanou.com.gifttalk.bean.homepage.FRChildBean;
@@ -77,7 +77,7 @@ public class FragmentHomeChild extends Fragment {
         adapter = new FragmentChildRecyclerAdapter(getContext());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(adapter);
+
         Bundle b = getArguments();
         id = b.getInt("value");
         vpPos = b.getInt("pos");
@@ -131,6 +131,7 @@ public class FragmentHomeChild extends Fragment {
                 }
 
                 adapter.setPicesList(picList);
+                recyclerView.setAdapter(adapter);
                 Log.d(TAG, "picList.size():" + picList.size());
 
             }

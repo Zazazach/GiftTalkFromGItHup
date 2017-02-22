@@ -9,10 +9,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import lanou.com.gifttalk.R;
-import lanou.com.gifttalk.fragment.FragmentClassify;
+import lanou.com.gifttalk.fragment.classifypage.FragmentClassify;
 import lanou.com.gifttalk.fragment.homepage.FragmentHome;
 import lanou.com.gifttalk.fragment.itempage.FragmentItem;
-import lanou.com.gifttalk.fragment.FragmentMine;
+import lanou.com.gifttalk.fragment.minepage.FragmentMine;
 import lanou.com.gifttalk.fragment.storepage.FragmentStore;
 
 /**

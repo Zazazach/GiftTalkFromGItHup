@@ -69,23 +69,23 @@ public class FragmentItemRvAdapter extends RecyclerView.Adapter<MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         isHeadView(position);
-        textView = (TextView) MyViewHolder.getmView().findViewById(R.id.tv_fragmentitem_top);
+        textView = (TextView) holder.getLineView().findViewById(R.id.tv_fragmentitem_top);
 
         if (position==0){
-            holder.whriteImage(bean.getData().getCover_image(),R.id.iv_fragmentitem_head_line);
+            holder.drawImage(bean.getData().getCover_image(),R.id.iv_fragmentitem_head_line);
         }else if (vpPos ==0){
             textView.setVisibility(View.GONE);
-            holder.whriteImage(bean.getData().getItems().get(position-1).getCover_image_url(),R.id.iv_fragmentitem_cover);
-            holder.whriteText(bean.getData().getItems().get(position-1).getDescription(),R.id.tv_fragmentitem_description);
-            holder.whriteText(bean.getData().getItems().get(position-1).getName(),R.id.tv_fragmentitem_name);
-            holder.whriteText(bean.getData().getItems().get(position-1).getPrice(),R.id.tv_fragmentitem_price);
+            holder.drawImage(bean.getData().getItems().get(position-1).getCover_image_url(),R.id.iv_fragmentitem_cover);
+            holder.writeText(bean.getData().getItems().get(position-1).getDescription(),R.id.tv_fragmentitem_description);
+            holder.writeText(bean.getData().getItems().get(position-1).getName(),R.id.tv_fragmentitem_name);
+            holder.writeText(bean.getData().getItems().get(position-1).getPrice(),R.id.tv_fragmentitem_price);
         }else {
             textView.setVisibility(View.VISIBLE);
-            holder.whriteText("TOP"+position,R.id.tv_fragmentitem_top);
-            holder.whriteImage(bean.getData().getItems().get(position-1).getCover_image_url(),R.id.iv_fragmentitem_cover);
-            holder.whriteText(bean.getData().getItems().get(position-1).getDescription(),R.id.tv_fragmentitem_description);
-            holder.whriteText(bean.getData().getItems().get(position-1).getName(),R.id.tv_fragmentitem_name);
-            holder.whriteText(bean.getData().getItems().get(position-1).getPrice(),R.id.tv_fragmentitem_price);
+            holder.writeText("TOP"+position,R.id.tv_fragmentitem_top);
+            holder.drawImage(bean.getData().getItems().get(position-1).getCover_image_url(),R.id.iv_fragmentitem_cover);
+            holder.writeText(bean.getData().getItems().get(position-1).getShort_description(),R.id.tv_fragmentitem_description);
+            holder.writeText(bean.getData().getItems().get(position-1).getName(),R.id.tv_fragmentitem_name);
+            holder.writeText(bean.getData().getItems().get(position-1).getPrice(),R.id.tv_fragmentitem_price);
         }
 
     }

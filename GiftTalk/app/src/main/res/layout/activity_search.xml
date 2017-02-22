@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_search"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="lanou.com.gifttalk.activity.homepage.SearchAct"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_search_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:background="@drawable/fragmenthome_edittext"
+            android:hint="搜索单品、攻略"
+            android:drawableLeft="@mipmap/nav_bar_icon_search_dark"
+            android:paddingLeft="35dp"
+            android:drawablePadding="20dp"
+            android:singleLine="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_cancel_home"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:text="取消"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="19"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="大家都在搜"
+            android:layout_margin="15dp"
+            android:drawableLeft="@mipmap/icon_start"
+            android:drawablePadding="9dp"/>
+
+
+        <LinearLayout
+
+            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv1_search_home"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:text="情侣"
+                android:layout_marginRight="10dp"
+                android:background="#f9ceb9"
+                android:textColor="#ff4258"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/tv2_search_home"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:text="情侣"
+                android:layout_marginRight="10dp"
+                android:background="#f9ceb9"
+                android:textColor="#ff4258"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/tv3_search_home"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:text="情侣"
+                android:layout_marginRight="10dp"
+                android:background="#f9ceb9"
+                android:textColor="#ff4258"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/tv4_search_home"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:text="情侣"
+                android:layout_marginRight="10dp"
+                android:background="#f9ceb9"
+                android:textColor="#ff4258"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv5_search_home"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:text="情侣"
+                android:layout_marginRight="10dp"
+                android:background="#f9ceb9"
+                android:textColor="#ff4258"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/tv6_search_home"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:text="情侣"
+                android:layout_marginRight="10dp"
+                android:background="#f9ceb9"
+                android:textColor="#ff4258"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/tv7_search_home"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:text="情侣"
+                android:layout_marginRight="10dp"
+                android:background="#f9ceb9"
+                android:textColor="#ff4258"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/tv8_search_home"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:text="情侣"
+                android:layout_marginRight="10dp"
+                android:background="#f9ceb9"
+                android:textColor="#ff4258"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_search_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
