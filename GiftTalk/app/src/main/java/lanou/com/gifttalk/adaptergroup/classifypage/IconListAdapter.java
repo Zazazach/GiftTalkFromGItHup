@@ -19,7 +19,11 @@ import lanou.com.gifttalk.bean.classifypage.IndividualityBean;
 
 public class IconListAdapter extends BaseAdapter {
     private List<String> iconlist,iconName;
+    private int linkagePos;
 
+    public void setLinkagePos(int linkagePos) {
+        this.linkagePos = linkagePos;
+    }
 
     private IndividualityBean bean;
     private Context context;
@@ -49,7 +53,12 @@ public class IconListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return iconlist.get(position);
+        if (linkagePos==0) {
+            return iconlist.get(position);
+        }else {
+            return iconlist.get(linkagePos);
+        }
+
     }
 
     @Override

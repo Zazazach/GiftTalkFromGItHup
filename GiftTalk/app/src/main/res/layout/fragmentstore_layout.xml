@@ -19,10 +19,11 @@
             android:layout_weight="8"
             android:layout_marginLeft="15dp"
             android:drawableLeft="@mipmap/nav_bar_icon_search_dark"
-            android:paddingLeft="60dp"
+            android:paddingLeft="40dp"
             android:hint="选份走心好礼送给Ta"
             android:drawablePadding="10dp"
             android:background="@drawable/fragmenthome_edittext"
+            android:singleLine="true"
             />
 
         <ImageView

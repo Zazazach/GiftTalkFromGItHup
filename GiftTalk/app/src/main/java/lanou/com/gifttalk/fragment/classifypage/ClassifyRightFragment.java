@@ -32,7 +32,7 @@ public class ClassifyRightFragment extends Fragment {
     private TitleListAdapter adapter;
     private IconListAdapter iconListAdapter;
     private List<String> titleList,iconList;
-    private IndividualityBean bean;
+    private IndividualityBean bean=new IndividualityBean();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -85,6 +85,9 @@ public class ClassifyRightFragment extends Fragment {
 
             }
         });
+
+
+
             //TODO 滑动联动不会写
 //        iconLv.setOnScrollListener(new AbsListView.OnScrollListener() {
 //                private int scollState;
@@ -95,13 +98,21 @@ public class ClassifyRightFragment extends Fragment {
 //
 //            @Override
 //            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-//                int current=bean.getData().getCategories().indexOf(firstVisibleItem);
+//
+//                //给出第一眼看到item的具体指标
+//                int current=iconList.indexOf(firstVisibleItem);
 //                int currentItem=0;
 //                if (currentItem!=current&&current>=0){
 //                    currentItem=current;
+//
+//                    //currentItem 指定位置
+//
+//              //      iconListAdapter.setLinkagePos(currentItem);
 //                }
 //            }
 //        });
+
+
 
 
 

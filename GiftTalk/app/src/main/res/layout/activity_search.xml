@@ -91,12 +91,11 @@
                 />
             <TextView
                 android:id="@+id/tv4_search_home"
-                android:layout_width="40dp"
+                android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:text="情侣"
                 android:layout_marginRight="10dp"
-                android:background="#f9ceb9"
-                android:textColor="#ff4258"
+                android:background="#faf5f5"
                 android:gravity="center"
                 />
         </LinearLayout>
@@ -116,8 +115,7 @@
                 android:layout_height="30dp"
                 android:text="情侣"
                 android:layout_marginRight="10dp"
-                android:background="#f9ceb9"
-                android:textColor="#ff4258"
+                android:background="#faf5f5"
                 android:gravity="center"
                 />
             <TextView
@@ -126,8 +124,7 @@
                 android:layout_height="30dp"
                 android:text="情侣"
                 android:layout_marginRight="10dp"
-                android:background="#f9ceb9"
-                android:textColor="#ff4258"
+                android:background="#faf5f5"
                 android:gravity="center"
                 />
             <TextView
@@ -136,8 +133,7 @@
                 android:layout_height="30dp"
                 android:text="情侣"
                 android:layout_marginRight="10dp"
-                android:background="#f9ceb9"
-                android:textColor="#ff4258"
+                android:background="#faf5f5"
                 android:gravity="center"
                 />
             <TextView
@@ -146,8 +142,7 @@
                 android:layout_height="30dp"
                 android:text="情侣"
                 android:layout_marginRight="10dp"
-                android:background="#f9ceb9"
-                android:textColor="#ff4258"
+                android:background="#faf5f5"
                 android:gravity="center"
                 />
         </LinearLayout>

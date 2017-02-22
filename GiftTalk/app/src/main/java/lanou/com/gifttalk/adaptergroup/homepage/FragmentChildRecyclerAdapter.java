@@ -31,6 +31,7 @@ public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHol
 
     private int RUNNING=1;
     private int NORMAL =2;
+    private int FOOTVIEW=3;
 
 
 
@@ -61,13 +62,18 @@ public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHol
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == RUNNING && idType == 0) {
-            Log.d(TAG, "aaaa");
+
             return MyViewHolder.createViewHolder(context, parent, R.layout.fragmenthome_rv_headview);
-        } else {
+
+        } else if (viewType==FOOTVIEW) {
 
             return MyViewHolder.createViewHolder(context, parent, R.layout.fragmenthome_child_recyclerline);
-
         }
+            else {
+
+                return MyViewHolder.createViewHolder(context, parent, R.layout.fragmenthome_child_recyclerline);
+            }
+
     }
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
@@ -95,14 +101,14 @@ public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHol
             holder.writeText(list.get(position-1).getTitle(), R.id.tv_title_fragmentchild_line);
             holder.writeText(""+list.get(position-1).getLikes_count(),R.id.tv_like__fragmentchild_line);
             holder.drawImage(list.get(position-1).getCover_image_url(), R.id.iv_cover_fragmentchild_line);
-            holder.drawImage(list.get(position-1).getAuthor().getAvatar_url(),R.id.iv_fragmentchild_line);
+            holder.drawImage(list.get(position-1).getAuthor().getAvatar_url(),R.id.iv_fragmentchild_line,context);
 
-        }else {
+        }else {//? 胃部不惧 与其他的布局数据来源都一样 是否还需要bind?
             holder.writeText(list.get(position).getAuthor().getNickname(), R.id.tv_author_fragmentchild_line);
             holder.writeText(list.get(position).getAuthor().getIntroduction(), R.id.tv_interduction_fragmentchild_line);
             holder.writeText(list.get(position).getIntroduction(), R.id.tv_description_fragmentchild_line);
             holder.writeText(list.get(position).getTitle(), R.id.tv_title_fragmentchild_line);
-            holder.drawImage(list.get(position).getAuthor().getAvatar_url(),R.id.iv_fragmentchild_line);
+            holder.drawImage(list.get(position).getAuthor().getAvatar_url(),R.id.iv_fragmentchild_line,context);
             holder.drawImage(list.get(position).getCover_image_url(), R.id.iv_cover_fragmentchild_line);
 
         }
@@ -112,15 +118,22 @@ public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHol
 
     @Override
     public int getItemViewType(int position) {
-        if (idType==0){
+//        if (idType==0){
             if (position==0){
                 return RUNNING;
-            }else {
-                return NORMAL;
+
+            }else if(position+1==getItemCount()){
+
+                return FOOTVIEW;
+                //如果是最后一位+1 那么就开始加载
             }
-        }else {
-            return NORMAL;
-        }
+            else {
+                    return NORMAL;
+                }
+
+//        }else {
+//            return NORMAL;
+//        }
 
     }
 

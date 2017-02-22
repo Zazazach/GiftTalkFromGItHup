@@ -17,6 +17,7 @@ import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
 
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import lanou.com.gifttalk.bean.homepage.FHRuningPicBean;
 import lanou.com.gifttalk.parser.ParseMethod;
 import lanou.com.gifttalk.parser.ParserTool;
@@ -68,6 +69,15 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    //设置圆形图片
+    public MyViewHolder drawImage(String url, int id,Context context){
+        ImageView imageView=getView(id);
+
+        if (url!=null){
+            Glide.with(context).load(url).bitmapTransform(new CropCircleTransformation(context)).into(imageView);
+        }
+        return this;
+    }
     public MyViewHolder drawImage(String url, int id){
         ImageView imageView=getView(id);
 

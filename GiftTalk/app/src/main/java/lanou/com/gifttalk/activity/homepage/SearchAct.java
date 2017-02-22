@@ -25,7 +25,7 @@ import lanou.com.gifttalk.parser.ParserTool;
 
 import static lanou.com.gifttalk.finaldata.Http.SEARCH;
 
-public class SearchAct extends BaseActivity {
+public class SearchAct extends BaseActivity implements View.OnClickListener {
     private RecyclerView recyclerView;
     private SearchRvAdapter adapter;
     private EditText editText;
@@ -62,7 +62,19 @@ public class SearchAct extends BaseActivity {
         createText();
 
 
+        tvOne.setOnClickListener(this);
+        tvTwo.setOnClickListener(this);
+        tvThree.setOnClickListener(this);
+        tvFour.setOnClickListener(this);
+        tvFive.setOnClickListener(this);
+        tvSix.setOnClickListener(this);
+        tvSeven.setOnClickListener(this);
+        tvEight.setOnClickListener(this);
+
     }
+
+
+
 
 
     private void clearHistoryData() {
@@ -122,6 +134,8 @@ public class SearchAct extends BaseActivity {
                 tvSix.setText(something.getData().getHot_words().get(5));
                 tvSeven.setText(something.getData().getHot_words().get(6));
                 tvEight.setText(something.getData().getHot_words().get(7));
+
+
             }
         });
     }
@@ -133,18 +147,23 @@ public class SearchAct extends BaseActivity {
                 String content=editText.getText().toString();
 
 
-                //与键盘对应 并且判断 按下 还是松手 否则执行两次 MDZZ
-                if(keyCode==KeyEvent.KEYCODE_ENTER&&content!=null&&event.getAction()==KeyEvent.ACTION_DOWN){
-                    contenList.add(content);
+                if (!contenList.contains(content)) {
 
-                    ContentValues values=new ContentValues();
-                    values.put("content",content);
-                    db.insert("list",null,values);
+                    //与键盘对应 并且判断 按下 还是松手 否则执行两次 MDZZ
+                    if (keyCode == KeyEvent.KEYCODE_ENTER && content != null && event.getAction() == KeyEvent.ACTION_DOWN) {
+                        contenList.add(content);
 
 
-                    adapter.setList(contenList);
-                    adapter.notifyDataSetChanged();
-                    recyclerView.setVisibility(View.VISIBLE);
+                        ContentValues values = new ContentValues();
+                        values.put("content", content);
+
+                        db.insert("list", null, values);
+
+
+                        adapter.setList(contenList);
+                        adapter.notifyDataSetChanged();
+                        recyclerView.setVisibility(View.VISIBLE);
+                    }
                 }
 
 
@@ -161,7 +180,7 @@ public class SearchAct extends BaseActivity {
 
         tvOne=(TextView) findViewById(R.id.tv1_search_home);
         tvTwo=(TextView) findViewById(R.id.tv2_search_home);
-        tvThree=(TextView) findViewById(R.id.tv3_search_home);
+        tvThree=(TextView)findViewById(R.id.tv3_search_home);
         tvFour=(TextView) findViewById(R.id.tv4_search_home);
         tvFive=(TextView) findViewById(R.id.tv5_search_home);
         tvSix=(TextView) findViewById(R.id.tv6_search_home);
@@ -170,5 +189,70 @@ public class SearchAct extends BaseActivity {
 
         delete= (ImageView) findViewById(R.id.iv_seach_line);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.tv1_search_home:
+                String contentOne=tvOne.getText().toString();
+
+                if (!contenList.contains(contentOne)) {
+
+                        contenList.add(contentOne);
+
+                        ContentValues values = new ContentValues();
+                        values.put("content", contentOne);
+
+                        db.insert("list", null, values);
+
+                        adapter.setList(contenList);
+                        adapter.notifyDataSetChanged();
+                        recyclerView.setVisibility(View.VISIBLE);
+
+                }
+                break;
+
+            case R.id.tv2_search_home:
+
+                String contentTwo=tvTwo.getText().toString();
+
+                if (!contenList.contains(contentTwo)) {
+
+                    contenList.add(contentTwo);
+
+                    ContentValues values = new ContentValues();
+                    values.put("content", contentTwo);
+
+                    db.insert("list", null, values);
+
+                    adapter.setList(contenList);
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
+                break;
+
+            case R.id.tv3_search_home:
+
+                String contentThree=tvThree.getText().toString();
+
+                if (!contenList.contains(contentThree)) {
+
+                    contenList.add(contentThree);
+
+                    ContentValues values = new ContentValues();
+                    values.put("content", contentThree);
+
+                    db.insert("list", null, values);
+
+                    adapter.setList(contenList);
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
+
+                break;
+
+        }
     }
 }

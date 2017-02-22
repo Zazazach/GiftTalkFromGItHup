@@ -12,7 +12,6 @@
         android:id="@+id/iv_fragmentchild_line"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="#88f"
         android:src="@mipmap/ic_launcher"
         />
 

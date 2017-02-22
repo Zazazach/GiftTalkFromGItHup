@@ -62,6 +62,7 @@ public class FragmentStore extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2,LinearLayoutManager.VERTICAL,false));
 
 
+
         ParserTool.getInstance().praser(STORE_UPPER, StoreUpperBean.class, new ParseMethod<StoreUpperBean>() {
             @Override
             public void onSucceed(StoreUpperBean something) {
@@ -70,32 +71,33 @@ public class FragmentStore extends Fragment {
                 adapter.setStoreUpperBean(something);
                 storeUpperBean = something;
 
+
+                ParserTool.getInstance().praser(STORE_DOWNER, StoreDownerBean.class, new ParseMethod<StoreDownerBean>() {
+                    @Override
+                    public void onSucceed(StoreDownerBean something) {
+
+                        adapter.setStoreDownerBean(something);
+
+                        final GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,LinearLayoutManager.VERTICAL,false);
+                        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                            @Override
+                            public int getSpanSize(int position) {
+                                if(position <= 7){
+                                    return 2;
+                                }else {
+                                    return 1;
+                                }
+
+
+                            }
+                        });
+
+                        recyclerView.setLayoutManager(gridLayoutManager);
+                        recyclerView.setAdapter(adapter);
+
             }
         });
 
-        ParserTool.getInstance().praser(STORE_DOWNER, StoreDownerBean.class, new ParseMethod<StoreDownerBean>() {
-            @Override
-            public void onSucceed(StoreDownerBean something) {
-
-                adapter.setStoreDownerBean(something);
-
-                final GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,LinearLayoutManager.VERTICAL,false);
-                gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                    @Override
-                    public int getSpanSize(int position) {
-                        if(position <= 7){
-                            return 2;
-                        }else {
-                            return 1;
-                        }
-
-
-                    }
-                });
-                recyclerView.setLayoutManager(gridLayoutManager);
-
-
-                recyclerView.setAdapter(adapter);
 
             }
         });
