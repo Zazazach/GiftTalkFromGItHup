@@ -4,4 +4,5 @@
         <attr name="drawCircle" format="boolean"></attr>
     </declare-styleable>
 
+
 </resources>

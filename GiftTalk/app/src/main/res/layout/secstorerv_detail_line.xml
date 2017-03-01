@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:layout_marginBottom="10dp">
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner_secstore_detail_line"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        ></com.youth.banner.Banner>
+
+    <TextView
+        android:id="@+id/tv_secstore_detail_line_shortdescription"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:text="原创设计 创意礼品 iF将"
+        android:textColor="#1c1c1c"
+        android:textSize="15sp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_secstore_detail_line_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:text="原创设计 创意礼品 iF将"
+        android:gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/tv__secstore_detail_line_price"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:text="$ 89"
+        android:textColor="#ff2d47"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/tv__secstore_detail_line_like"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="2099"
+        android:drawableLeft="@mipmap/ic_action_item_favourite_normal"
+        android:paddingLeft="160dp"
+        android:drawablePadding="10dp"
+        android:textSize="10sp"
+        android:gravity="center_vertical"
+        />
+
+</LinearLayout>

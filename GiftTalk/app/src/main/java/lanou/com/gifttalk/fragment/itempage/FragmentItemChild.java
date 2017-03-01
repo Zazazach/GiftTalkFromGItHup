@@ -1,6 +1,8 @@
 package lanou.com.gifttalk.fragment.itempage;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,9 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import lanou.com.gifttalk.R;
+import lanou.com.gifttalk.activity.itempage.SecondLevelAct;
 import lanou.com.gifttalk.adaptergroup.itempage.FragmentItemAdapter;
 import lanou.com.gifttalk.adaptergroup.itempage.FragmentItemRvAdapter;
-import lanou.com.gifttalk.bean.itempage.FRItemChildBean;
+import lanou.com.gifttalk.bean.itempage.ItemChildBean;
+import lanou.com.gifttalk.inter.ItemClicker;
 import lanou.com.gifttalk.parser.ParseMethod;
 import lanou.com.gifttalk.parser.ParserTool;
 
@@ -26,7 +30,8 @@ public class FragmentItemChild extends Fragment {
 
     private RecyclerView recyclerView;
     private FragmentItemRvAdapter adapter;
-    private FRItemChildBean bean;
+
+    private ItemChildBean childBean;
 
 
     @Nullable
@@ -57,9 +62,9 @@ public class FragmentItemChild extends Fragment {
 
         String ITEM_URL=BASE_URL+""+id+OTHER;
 
-        ParserTool.getInstance().praser(ITEM_URL, FRItemChildBean.class, new ParseMethod<FRItemChildBean>() {
+        ParserTool.getInstance().praser(ITEM_URL, ItemChildBean.class, new ParseMethod<ItemChildBean>() {
             @Override
-            public void onSucceed(FRItemChildBean something) {
+            public void onSucceed(ItemChildBean something) {
                 adapter=new FragmentItemRvAdapter(getContext());
                 final GridLayoutManager layoutManager=new GridLayoutManager(getContext(),2, LinearLayoutManager.VERTICAL,false);
 
@@ -72,12 +77,27 @@ public class FragmentItemChild extends Fragment {
                     }
                 });
 
-                adapter.setBean(something);
+                childBean = something;
+                adapter.setBean(childBean);
                 adapter.setVpPos(postion);
                 recyclerView.setAdapter(adapter);
-                Log.d("FragmentItemChild", "something:" + something);
+
+
+                adapter.setClicker(new ItemClicker() {
+                    @Override
+                    public void itemClicker(int postion) {
+
+                        Intent intent=new Intent(getActivity(),SecondLevelAct.class);
+                        intent.putExtra("bean",childBean.getData().getItems().get(postion-1));
+                        intent.putExtra("bean2",childBean);
+                        startActivity(intent);
+                        Log.d("FragmentItemChild", "333333333");
+                    }
+                });
             }
         });
+
+
 
     }
 

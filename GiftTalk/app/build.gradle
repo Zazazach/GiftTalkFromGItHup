@@ -37,5 +37,7 @@ dependencies {
     compile 'com.github.jdsjlzx:LRecyclerView:1.2.9'
     compile 'com.android.support:design:25.1.0'
     compile 'jp.wasabeef:glide-transformations:2.0.0'
-
+    compile 'jp.wasabeef:glide-transformations:2.0.0'
+    compile 'com.github.userswlwork:pull-to-refresh:1.0.0'
+    compile 'de.greenrobot:eventbus:3.0.0-beta1'
 }

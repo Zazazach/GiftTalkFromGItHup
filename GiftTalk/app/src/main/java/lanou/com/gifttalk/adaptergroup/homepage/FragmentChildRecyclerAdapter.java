@@ -2,7 +2,7 @@ package lanou.com.gifttalk.adaptergroup.homepage;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -11,7 +11,8 @@ import java.util.List;
 
 import lanou.com.gifttalk.R;
 import lanou.com.gifttalk.adaptergroup.MyViewHolder;
-import lanou.com.gifttalk.bean.homepage.FRChildBean;
+import lanou.com.gifttalk.bean.homepage.ChildBean;
+import lanou.com.gifttalk.inter.ClickToDetail;
 
 import static lanou.com.gifttalk.finaldata.Http.RUNNING_PIC;
 
@@ -22,12 +23,16 @@ import static lanou.com.gifttalk.finaldata.Http.RUNNING_PIC;
 public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     private static final String TAG = "FragmentChildRecyclerAd";
-    private List<FRChildBean.DataBean.ItemsBean> list;
+    private List<ChildBean.DataBean.ItemsBean> list;
     private Context context;
     private int idType;
-    private ArrayList<String> imageUrls;
-    private ArrayList<String> picesList;
-    private ImageView oneIv,twoIv,threeIv,fourIv,fiveIv,sixIv;
+    private ArrayList<String> picesList,imageUrls;
+    private ClickToDetail toDetail;
+
+    public void setToDetail(ClickToDetail toDetail) {
+        this.toDetail = toDetail;
+        notifyDataSetChanged();
+    }
 
     private int RUNNING=1;
     private int NORMAL =2;
@@ -49,7 +54,7 @@ public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHol
         this.imageUrls = imageUrls;
     }
 
-    public void setList(List<FRChildBean.DataBean.ItemsBean> list) {
+    public void setList(List<ChildBean.DataBean.ItemsBean> list) {
         this.list = list;
         notifyDataSetChanged();
     }
@@ -92,8 +97,6 @@ public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHol
             holder.drawImage(picesList.get(5),R.id.iv_six);
 
 
-
-
         } else if (itemType== NORMAL &&idType==0){
             holder.writeText(list.get(position-1).getAuthor().getNickname(), R.id.tv_author_fragmentchild_line);
             holder.writeText(list.get(position-1).getAuthor().getIntroduction(), R.id.tv_interduction_fragmentchild_line);
@@ -103,6 +106,13 @@ public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHol
             holder.drawImage(list.get(position-1).getCover_image_url(), R.id.iv_cover_fragmentchild_line);
             holder.drawImage(list.get(position-1).getAuthor().getAvatar_url(),R.id.iv_fragmentchild_line,context);
 
+            holder.getView(R.id.rl_child_recyclerline).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    toDetail.toDetail(position-1);
+                }
+            });
+
         }else {//? 胃部不惧 与其他的布局数据来源都一样 是否还需要bind?
             holder.writeText(list.get(position).getAuthor().getNickname(), R.id.tv_author_fragmentchild_line);
             holder.writeText(list.get(position).getAuthor().getIntroduction(), R.id.tv_interduction_fragmentchild_line);
@@ -111,6 +121,12 @@ public class FragmentChildRecyclerAdapter extends RecyclerView.Adapter<MyViewHol
             holder.drawImage(list.get(position).getAuthor().getAvatar_url(),R.id.iv_fragmentchild_line,context);
             holder.drawImage(list.get(position).getCover_image_url(), R.id.iv_cover_fragmentchild_line);
 
+            holder.getView(R.id.rl_child_recyclerline).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    toDetail.toDetail(position);
+                }
+            });
         }
 //      holder.drawImage(list.get(position).getAuthor().getAvatar_url(),R.id.iv_fragmentchild_line);
 

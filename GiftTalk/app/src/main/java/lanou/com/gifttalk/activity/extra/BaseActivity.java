@@ -1,4 +1,4 @@
-package lanou.com.gifttalk.activity;
+package lanou.com.gifttalk.activity.extra;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;

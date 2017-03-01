@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import lanou.com.gifttalk.bean.homepage.FRChildBean;
-import lanou.com.gifttalk.bean.homepage.FRTitleBean;
+import lanou.com.gifttalk.bean.homepage.ChildBean;
+import lanou.com.gifttalk.bean.homepage.TitleBean;
 import lanou.com.gifttalk.fragment.homepage.FragmentHomeChild;
 
 /**
@@ -18,9 +18,9 @@ import lanou.com.gifttalk.fragment.homepage.FragmentHomeChild;
 
 public class FragmentAdapter extends FragmentStatePagerAdapter {
 
-    private static ArrayList<FRChildBean.DataBean.ItemsBean> list;
+    private static ArrayList<ChildBean.DataBean.ItemsBean> list;
 
-    private static List<FRTitleBean.DataBean.ChannelsBean> titleList;
+    private static List<TitleBean.DataBean.ChannelsBean> titleList;
 
 
 
@@ -35,12 +35,12 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
     }
 
 
-    public void setTitleList(List<FRTitleBean.DataBean.ChannelsBean> titleList) {
+    public void setTitleList(List<TitleBean.DataBean.ChannelsBean> titleList) {
         FragmentAdapter.titleList = titleList;
         notifyDataSetChanged();
     }
 
-    public void setList(ArrayList<FRChildBean.DataBean.ItemsBean> list) {
+    public void setList(ArrayList<ChildBean.DataBean.ItemsBean> list) {
         FragmentAdapter.list = list;
         notifyDataSetChanged();
     }

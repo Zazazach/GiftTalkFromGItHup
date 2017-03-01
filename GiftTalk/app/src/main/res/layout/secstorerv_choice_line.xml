@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:layout_marginBottom="10dp">
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1.5"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="已选:"
+        android:textColor="#7d7d7d"
+        android:gravity="center"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_secstore_choice_line_choice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:text="请选择规格"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"/>
+
+    <ImageView
+        android:id="@+id/iv_secstore_choice_line_menu"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_menu_black"
+        android:gravity="center_vertical"/>
+
+
+
+</LinearLayout>

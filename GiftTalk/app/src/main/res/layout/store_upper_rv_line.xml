@@ -1,45 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="200dp"
-    android:layout_height="200dp">
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="200dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="10dp">
 
     <ImageView
         android:id="@+id/iv_store_coverupper_line"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="7.2"
+        android:layout_gravity="center"
         android:src="@mipmap/ic_launcher"
+
         />
 
     <TextView
         android:id="@+id/tv_store_shortdescriptionupper_line"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1.8"
         android:text="快速充电"
-        android:gravity="center"
+
+        android:layout_gravity="center_horizontal"
         android:singleLine="true"/>
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="50dp"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal">
 
         <TextView
             android:id="@+id/tv_upper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="¥"
+            android:layout_centerHorizontal="true"
+            android:text="¥ 51.00"
+
             android:textColor="#ee4d61"/>
 
-        <TextView
-            android:id="@+id/tv_store_fixedpriceupper_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="121"
-            android:textColor="#ee4d61"
-            android:layout_toRightOf="@id/tv_upper"
-            android:layout_alignBottom="@id/tv_upper"/>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_store_fixedpriceupper_line"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="121"-->
+            <!--android:textColor="#ee4d61"-->
+            <!--android:layout_toRightOf="@id/tv_upper"-->
+            <!--android:layout_alignBottom="@id/tv_upper"/>-->
     </RelativeLayout>
 </LinearLayout>

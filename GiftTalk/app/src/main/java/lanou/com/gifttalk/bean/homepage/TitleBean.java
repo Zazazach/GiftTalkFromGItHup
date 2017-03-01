@@ -6,7 +6,7 @@ import java.util.List;
  * Created by dllo on 17/2/13.
  */
 
-public class FRTitleBean {
+public class TitleBean {
 
     /**
      * code : 200

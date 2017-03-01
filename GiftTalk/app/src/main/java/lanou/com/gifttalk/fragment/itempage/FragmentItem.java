@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import lanou.com.gifttalk.R;
 import lanou.com.gifttalk.adaptergroup.itempage.FragmentItemAdapter;
-import lanou.com.gifttalk.bean.itempage.FRItemTitleBean;
+import lanou.com.gifttalk.bean.itempage.ItemTitleBean;
 import lanou.com.gifttalk.parser.ParseMethod;
 import lanou.com.gifttalk.parser.ParserTool;
 
@@ -28,7 +28,7 @@ public class FragmentItem extends Fragment {
     private ImageView imageView;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private ArrayList<FRItemTitleBean.DataBean.RanksBean> list;
+    private ArrayList<ItemTitleBean.DataBean.RanksBean> list;
 
     private FragmentItemAdapter adapter;
 
@@ -59,11 +59,11 @@ public class FragmentItem extends Fragment {
 
 
 
-        ParserTool.getInstance().praser(ITEM_TITLE, FRItemTitleBean.class, new ParseMethod<FRItemTitleBean>() {
+        ParserTool.getInstance().praser(ITEM_TITLE, ItemTitleBean.class, new ParseMethod<ItemTitleBean>() {
             @Override
-            public void onSucceed(FRItemTitleBean something) {
+            public void onSucceed(ItemTitleBean something) {
                 list=new ArrayList<>();
-                list= (ArrayList<FRItemTitleBean.DataBean.RanksBean>) something.getData().getRanks();
+                list= (ArrayList<ItemTitleBean.DataBean.RanksBean>) something.getData().getRanks();
 
                 adapter.setList(list);
             }

@@ -3,6 +3,7 @@ package lanou.com.gifttalk.fragment.classifypage;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,39 +79,43 @@ public class ClassifyRightFragment extends Fragment {
 
         });
 
+        //双方近性监听,
+        // 1.首先是 title监听 点击item icon显示制定position 很简单粗暴的方法
         titleLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 iconLv.setSelection(position);
+                adapter.setRedPlace(position);
 
+
+            }
+        });
+
+        //2.右侧滑动方的监听 通过方法名就能了解到大概
+        //onScrollStateChanged 获得当前滑动的状态 是停止还是在滑 我们要滑动时的状态,但这之前需要个变量来传接下
+        iconLv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            int scroll;
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                scroll=scrollState;
+            }
+
+            //如果滑动停止,那么此时此刻就不需要 你把position传过来 (上一毫秒已经传送完毕,
+            // 如果不这么设置 会一直卡在这位置)
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+            if (scroll == AbsListView.OnScrollListener.SCROLL_STATE_IDLE){
+                return;
+            }
+                titleLv.setSelection(firstVisibleItem);
+                adapter.setRedPlace(firstVisibleItem);
+                Log.d("ClassifyRightFragment", "firstVisibleItem:" + firstVisibleItem);
             }
         });
 
 
 
-            //TODO 滑动联动不会写
-//        iconLv.setOnScrollListener(new AbsListView.OnScrollListener() {
-//                private int scollState;
-//            @Override
-//            public void onScrollStateChanged(AbsListView view, int scrollState) {
-//                this.scollState=scrollState;
-//            }
-//
-//            @Override
-//            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-//
-//                //给出第一眼看到item的具体指标
-//                int current=iconList.indexOf(firstVisibleItem);
-//                int currentItem=0;
-//                if (currentItem!=current&&current>=0){
-//                    currentItem=current;
-//
-//                    //currentItem 指定位置
-//
-//              //      iconListAdapter.setLinkagePos(currentItem);
-//                }
-//            }
-//        });
 
 
 

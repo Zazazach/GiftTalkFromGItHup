@@ -15,10 +15,12 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
-import lanou.com.gifttalk.bean.homepage.FHRuningPicBean;
+import lanou.com.gifttalk.bean.homepage.RuningPicBean;
 import lanou.com.gifttalk.parser.ParseMethod;
 import lanou.com.gifttalk.parser.ParserTool;
 
@@ -95,15 +97,13 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
 
     public MyViewHolder setBanner(final int id, String URL){
          final Banner banner=getView(id);
-        ParserTool.getInstance().praser(URL, FHRuningPicBean.class, new ParseMethod<FHRuningPicBean>() {
+        ParserTool.getInstance().praser(URL, RuningPicBean.class, new ParseMethod<RuningPicBean>() {
            @Override
-            public void onSucceed(FHRuningPicBean something) {
+            public void onSucceed(RuningPicBean something) {
                Log.d("kkkkk", "aaaa");
                 for (int i = 0; i < something.getData().getBanners().size(); i++) {
                     list.add(something.getData().getBanners().get(i).getImage_url());
                 }
-
-
 
                Log.e(TAG, "setBanner: "+""+list.size());
                    banner.setImages(list);
@@ -113,15 +113,26 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
                    banner.setIndicatorGravity(BannerConfig.CENTER);
                    banner.start();
 
-
             }
         });
-
-
 
         return this;
     }
 
+
+    public MyViewHolder setBanner(final int id, ArrayList<String> urls){
+        final Banner banner=getView(id);
+
+                banner.setImages(urls);
+                banner.setImageLoader(new BannerImageLoader());
+                banner.isAutoPlay(true);
+                banner.setDelayTime(3000);
+                banner.setIndicatorGravity(BannerConfig.CENTER);
+                banner.start();
+
+
+        return this;
+    }
 
 //    public static View getmView(){
 //        return mView;
@@ -140,7 +151,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         public void displayImage(Context context, Object path, ImageView imageView) {
             Glide.with(context).load(path).into(imageView);
 
-            // java.lang.IllegalArgumentException: Unknown type class lanou.com.gifttalk.bean.homepage.FHRuningPicBean$DataBean$BannersBean. You must provide a Model of a type for which there is a registered ModelLoader, if you are using a custom model, you must first call Glide#register with a ModelLoaderFactory for your custom model class
+            // java.lang.IllegalArgumentException: Unknown type class lanou.com.gifttalk.bean.homepage.RuningPicBean$DataBean$BannersBean. You must provide a Model of a type for which there is a registered ModelLoader, if you are using a custom model, you must first call Glide#register with a ModelLoaderFactory for your custom model class
 //            at com.bumptech.glide.RequestManager.loadGeneric(RequestManager.java:629)
 //            at com.bumptech.glide.RequestManager.load(RequestManager.java:598)
 //            at lanou.com.gifttalk.adaptergroup.MyViewHolder$BannerImageLoader.displayImage(MyViewHolder.java:95)

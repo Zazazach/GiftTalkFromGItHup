@@ -6,19 +6,24 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".activity.extra.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ActMajor">
+        <activity android:name=".activity.extra.ActMajor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.homepage.DetailAct"></activity>
         <activity android:name=".activity.homepage.SearchAct"></activity>
+        <activity android:name=".activity.itempage.SecondLevelAct"></activity>
+        <activity android:name=".activity.itempage.PurchaseAct"></activity>
+        <activity android:name=".activity.storepage.SecondStoreAct"></activity>
 
     </application>
 

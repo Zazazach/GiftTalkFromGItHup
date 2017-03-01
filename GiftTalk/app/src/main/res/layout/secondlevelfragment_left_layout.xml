@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    >
+
+    <com.youth.banner.Banner
+        android:id="@+id/ban_second_left"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+
+    </com.youth.banner.Banner>
+
+    <TextView
+        android:id="@+id/tv_second_left_short"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:text="送男神的最佳礼物"
+        android:textColor="#242424"
+        android:textSize="16sp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_second_left_name"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:text="或向先生.复古欧式羽毛笔礼盒"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_second_left_price"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:text="¥ 148"
+        android:textColor="#cc0203"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_second_left_like"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:drawableLeft="@mipmap/icon_favourite_gray"
+        android:paddingLeft="170dp"
+        android:text="494"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"/>
+
+
+    <TextView
+        android:id="@+id/tv_second_left_description"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:text="或向先生.复古欧式羽毛笔礼盒"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:layout_marginBottom="10dp"
+        />
+</LinearLayout>

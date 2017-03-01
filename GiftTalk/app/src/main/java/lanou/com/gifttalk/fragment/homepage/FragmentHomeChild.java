@@ -1,6 +1,7 @@
 package lanou.com.gifttalk.fragment.homepage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -18,11 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lanou.com.gifttalk.R;
+import lanou.com.gifttalk.activity.homepage.DetailAct;
 import lanou.com.gifttalk.adaptergroup.homepage.FragmentAdapter;
 import lanou.com.gifttalk.adaptergroup.homepage.FragmentChildRecyclerAdapter;
-import lanou.com.gifttalk.bean.homepage.FHRuningPicBean;
-import lanou.com.gifttalk.bean.homepage.FRChildBean;
+import lanou.com.gifttalk.bean.homepage.RuningPicBean;
+import lanou.com.gifttalk.bean.homepage.ChildBean;
 import lanou.com.gifttalk.bean.homepage.HomeSixPicesBean;
+import lanou.com.gifttalk.inter.ClickToDetail;
 import lanou.com.gifttalk.parser.ParseMethod;
 import lanou.com.gifttalk.parser.ParserTool;
 
@@ -37,13 +40,13 @@ public class FragmentHomeChild extends Fragment {
     private static final String TAG = "FragmentHomeChild";
     private RecyclerView recyclerView;
     private FragmentChildRecyclerAdapter adapter;
-    private ArrayList<FRChildBean.DataBean.ItemsBean> list;
+    private ArrayList<ChildBean.DataBean.ItemsBean> list;
     private int id, recyclerState;
-    private List<FHRuningPicBean.DataBean.BannersBean> bannersBeen;
+    private List<RuningPicBean.DataBean.BannersBean> bannersBeen;
     private int vpPos;
     private SwipeRefreshLayout swipeRefreshLayout;
     private LinearLayoutManager layoutManager;
-    private FRChildBean frChildBean;
+    private ChildBean childBean;
 
 
     @Override
@@ -86,40 +89,33 @@ public class FragmentHomeChild extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
 
-        Bundle b = getArguments();
-        id = b.getInt("value");
-        vpPos = b.getInt("pos");
+        Bundle bundle = getArguments();
+        id = bundle.getInt("value");
+        vpPos = bundle.getInt("pos");
 
         adapter.setIdType(vpPos);
         final String PAGE_URL = "http://api.liwushuo.com/v2/channels/" + id + "/items_v2?gender=1&generation=2&limit=20&offset=0";
 
-
-        ParserTool.getInstance().praser(PAGE_URL, FRChildBean.class, new ParseMethod<FRChildBean>() {
+        //根据接口网站分别接希望孩子拿到数据 并发送
+        //1.正常页面数据
+        ParserTool.getInstance().praser(PAGE_URL, ChildBean.class, new ParseMethod<ChildBean>() {
 
             @Override
-            public void onSucceed(FRChildBean something) {
+            public void onSucceed(ChildBean something) {
+                list = (ArrayList<ChildBean.DataBean.ItemsBean>) something.getData().getItems();
 
+                childBean = something;
 
-                list = (ArrayList<FRChildBean.DataBean.ItemsBean>) something.getData().getItems();
-
-                frChildBean = something;
-
-                Log.d(TAG, "list.size():" + list.size());
                 adapter.setList(list);
 
             }
 
         });
 
-
-
-
-        ParserTool.getInstance().praser(RUNNING_PIC, FHRuningPicBean.class, new ParseMethod<FHRuningPicBean>() {
+        //2.轮播图
+        ParserTool.getInstance().praser(RUNNING_PIC, RuningPicBean.class, new ParseMethod<RuningPicBean>() {
             @Override
-            public void onSucceed(FHRuningPicBean something) {
-
-                Log.d("FragmentHomeChild", "aaaa");
-
+            public void onSucceed(RuningPicBean something) {
 
                 bannersBeen = something.getData().getBanners();
 
@@ -132,21 +128,40 @@ public class FragmentHomeChild extends Fragment {
             }
         });
 
-
+        //3.六宫格图片设置
         ParserTool.getInstance().praser(HOME_PICES, HomeSixPicesBean.class, new ParseMethod<HomeSixPicesBean>() {
             @Override
-            public void onSucceed(HomeSixPicesBean something) {
-                ArrayList<String> picList=new ArrayList<String>();
-                for (int i = 0; i < something.getData().getSecondary_banners().size(); i++) {
-                    picList.add(something.getData().getSecondary_banners().get(i).getImage_url());
-                }
+        public void onSucceed(HomeSixPicesBean something) {
+            ArrayList<String> picList=new ArrayList<String>();
+            for (int i = 0; i < something.getData().getSecondary_banners().size(); i++) {
 
-                adapter.setPicesList(picList);
-                recyclerView.setAdapter(adapter);
-                Log.d(TAG, "picList.size():" + picList.size());
+                picList.add(something.getData().getSecondary_banners().get(i).getImage_url());
+            }
+            adapter.setPicesList(picList);
+            recyclerView.setAdapter(adapter);
+        }
+    });
+
+
+        //详情页设置
+        adapter.setToDetail(new ClickToDetail() {
+            @Override
+            public void toDetail(int postion) {
+
+                Intent intent=new Intent(getContext(), DetailAct.class);
+         //       intent.putExtra("uuu",childBean);
+                Log.e(TAG, "toDetail: " +( childBean.getData()==null));
+                //包裹化没包裹上
+
+                intent.putExtra("url",childBean);
+                intent.putExtra("pos",postion);
+
+                startActivity(intent);
+
 
             }
         });
+
 
 
         //下拉刷新 通过重新加载解析网址
@@ -157,19 +172,20 @@ public class FragmentHomeChild extends Fragment {
 
 
         //上拉加载 通过位置的判断 在接口链接拿到数据 加入已有集合中
-        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState==RecyclerView.SCROLL_STATE_IDLE&&recyclerState+1==adapter.getItemCount()){
 
-                    ParserTool.getInstance().praser(frChildBean.getData().getPaging().getNext_url(), FRChildBean.class, new ParseMethod<FRChildBean>() {
+                    ParserTool.getInstance().praser(childBean.getData().getPaging().getNext_url(), ChildBean.class, new ParseMethod<ChildBean>() {
 
                         @Override
-                        public void onSucceed(FRChildBean something) {
+                        public void onSucceed(ChildBean something) {
 
-                            ArrayList<FRChildBean.DataBean.ItemsBean> loadList=null;
-                            loadList = (ArrayList<FRChildBean.DataBean.ItemsBean>) something.getData().getItems();
+                            ArrayList<ChildBean.DataBean.ItemsBean> loadList=null;
+                            loadList = (ArrayList<ChildBean.DataBean.ItemsBean>) something.getData().getItems();
 
                             Log.d(TAG, "上啦"+list.size()+""+loadList.size()+" "+recyclerState);
                             list.addAll(loadList);
@@ -181,17 +197,22 @@ public class FragmentHomeChild extends Fragment {
 
                 }
 
+
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+
                 recyclerState=layoutManager.findLastVisibleItemPosition();
             }
         });
 
 
     }
+
+
+
 
     private void swipeBeanFromUrls(final String PAGE_URL) {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -201,12 +222,12 @@ public class FragmentHomeChild extends Fragment {
                     @Override
                     public void run() {
 
-                        ParserTool.getInstance().praser(PAGE_URL, FRChildBean.class, new ParseMethod<FRChildBean>() {
+                        ParserTool.getInstance().praser(PAGE_URL, ChildBean.class, new ParseMethod<ChildBean>() {
 
                             @Override
-                            public void onSucceed(FRChildBean something) {
+                            public void onSucceed(ChildBean something) {
 
-                                list = (ArrayList<FRChildBean.DataBean.ItemsBean>) something.getData().getItems();
+                                list = (ArrayList<ChildBean.DataBean.ItemsBean>) something.getData().getItems();
 
                                 Log.d(TAG, "list.size():" + list.size());
                                 adapter.setList(list);
@@ -216,9 +237,9 @@ public class FragmentHomeChild extends Fragment {
                         });
 
 
-                        ParserTool.getInstance().praser(RUNNING_PIC, FHRuningPicBean.class, new ParseMethod<FHRuningPicBean>() {
+                        ParserTool.getInstance().praser(RUNNING_PIC, RuningPicBean.class, new ParseMethod<RuningPicBean>() {
                             @Override
-                            public void onSucceed(FHRuningPicBean something) {
+                            public void onSucceed(RuningPicBean something) {
 
                                 Log.d("FragmentHomeChild", "aaaa");
 

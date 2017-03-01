@@ -6,5 +6,5 @@ package lanou.com.gifttalk.inter;
 
 public interface RvItemClick  {
 
-    void  clickMe(int postion);
+    void  clickMe(int interPostion);
 }

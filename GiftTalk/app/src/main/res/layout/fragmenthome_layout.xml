@@ -22,6 +22,10 @@
             android:id="@+id/et_home"
             android:layout_width="0dp"
             android:layout_weight="6.42"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
             android:drawableLeft="@mipmap/nav_bar_icon_search_dark"
             android:layout_height="match_parent"
             android:drawablePadding="@dimen/fragmenthome_ed_paddingdrawable"
@@ -46,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.67"
-        android:background="#f88">
+        >
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tl_fragmenthome"

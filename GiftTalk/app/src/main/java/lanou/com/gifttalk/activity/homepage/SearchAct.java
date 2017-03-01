@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lanou.com.gifttalk.R;
-import lanou.com.gifttalk.activity.BaseActivity;
+import lanou.com.gifttalk.activity.extra.BaseActivity;
 import lanou.com.gifttalk.adaptergroup.homepage.SearchRvAdapter;
 import lanou.com.gifttalk.bean.homepage.SearchBean;
 import lanou.com.gifttalk.inter.RvItemClick;
@@ -80,7 +80,7 @@ public class SearchAct extends BaseActivity implements View.OnClickListener {
     private void clearHistoryData() {
         adapter.setClick(new RvItemClick() {
             @Override
-            public void clickMe(int postion) {
+            public void clickMe(int interPostion) {
                 Log.d("SearchAct", "aaa");
                 db.execSQL("delete from list");
                 contenList=new ArrayList<>();

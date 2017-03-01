@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     >
 
     <LinearLayout
@@ -17,11 +18,17 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="8"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="5dp"
+            android:paddingTop="8dp"
             android:layout_marginLeft="15dp"
             android:drawableLeft="@mipmap/nav_bar_icon_search_dark"
             android:paddingLeft="40dp"
             android:hint="选份走心好礼送给Ta"
+            android:textSize="16sp"
             android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="10dp"
             android:background="@drawable/fragmenthome_edittext"
             android:singleLine="true"
             />
@@ -38,7 +45,6 @@
     </LinearLayout>
 
 
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_fragmentstore_layout"
         android:layout_width="match_parent"
@@ -46,9 +52,6 @@
         android:layout_weight="9.9">
 
     </android.support.v7.widget.RecyclerView>
-
-
-
 
 
 </LinearLayout>

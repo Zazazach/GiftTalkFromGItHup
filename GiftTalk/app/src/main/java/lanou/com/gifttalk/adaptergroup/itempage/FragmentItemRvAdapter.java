@@ -9,7 +9,8 @@ import android.widget.TextView;
 
 import lanou.com.gifttalk.R;
 import lanou.com.gifttalk.adaptergroup.MyViewHolder;
-import lanou.com.gifttalk.bean.itempage.FRItemChildBean;
+import lanou.com.gifttalk.bean.itempage.ItemChildBean;
+import lanou.com.gifttalk.inter.ItemClicker;
 
 /**
  * Created by dllo on 17/2/16.
@@ -18,9 +19,15 @@ import lanou.com.gifttalk.bean.itempage.FRItemChildBean;
 public class FragmentItemRvAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     private Context context;
-    private FRItemChildBean bean;
+    private ItemChildBean bean;
     private boolean head;
     private TextView textView;
+    private ItemClicker clicker;
+
+    public void setClicker(ItemClicker clicker) {
+        this.clicker = clicker;
+        notifyDataSetChanged();
+    }
 
     private int vpPos;
 
@@ -30,7 +37,7 @@ public class FragmentItemRvAdapter extends RecyclerView.Adapter<MyViewHolder> {
         notifyDataSetChanged();
     }
 
-    public void setBean(FRItemChildBean bean) {
+    public void setBean(ItemChildBean bean) {
         this.bean = bean;
         notifyDataSetChanged();
     }
@@ -66,7 +73,7 @@ public class FragmentItemRvAdapter extends RecyclerView.Adapter<MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         isHeadView(position);
         textView = (TextView) holder.getLineView().findViewById(R.id.tv_fragmentitem_top);
@@ -76,9 +83,15 @@ public class FragmentItemRvAdapter extends RecyclerView.Adapter<MyViewHolder> {
         }else if (vpPos ==0){
             textView.setVisibility(View.GONE);
             holder.drawImage(bean.getData().getItems().get(position-1).getCover_image_url(),R.id.iv_fragmentitem_cover);
-            holder.writeText(bean.getData().getItems().get(position-1).getDescription(),R.id.tv_fragmentitem_description);
+            holder.writeText(bean.getData().getItems().get(position-1).getShort_description(),R.id.tv_fragmentitem_description);
             holder.writeText(bean.getData().getItems().get(position-1).getName(),R.id.tv_fragmentitem_name);
             holder.writeText(bean.getData().getItems().get(position-1).getPrice(),R.id.tv_fragmentitem_price);
+            holder.getView(R.id.l_click).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clicker.itemClicker(position);
+                }
+            });
         }else {
             textView.setVisibility(View.VISIBLE);
             holder.writeText("TOP"+position,R.id.tv_fragmentitem_top);
@@ -86,6 +99,14 @@ public class FragmentItemRvAdapter extends RecyclerView.Adapter<MyViewHolder> {
             holder.writeText(bean.getData().getItems().get(position-1).getShort_description(),R.id.tv_fragmentitem_description);
             holder.writeText(bean.getData().getItems().get(position-1).getName(),R.id.tv_fragmentitem_name);
             holder.writeText(bean.getData().getItems().get(position-1).getPrice(),R.id.tv_fragmentitem_price);
+
+            holder.getView(R.id.l_click).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clicker.itemClicker(position);
+                }
+            });
+
         }
 
     }

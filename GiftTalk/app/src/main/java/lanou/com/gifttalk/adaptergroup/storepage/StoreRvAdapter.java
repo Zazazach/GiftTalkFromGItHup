@@ -1,17 +1,22 @@
 package lanou.com.gifttalk.adaptergroup.storepage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import lanou.com.gifttalk.R;
+import lanou.com.gifttalk.activity.storepage.SecondStoreAct;
 import lanou.com.gifttalk.adaptergroup.MyViewHolder;
 import lanou.com.gifttalk.bean.storepage.StoreDownerBean;
 import lanou.com.gifttalk.bean.storepage.StoreUpperBean;
+import lanou.com.gifttalk.inter.RvItemClick;
 
 /**
  * Created by dllo on 17/2/16.
@@ -28,8 +33,6 @@ public class StoreRvAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private final int PIC=0;
     private final int HRV=1;
     private final int GRV=2;
-    int itemPostion=0;
-    private int picPositon = 0;
 
 
     public void setStoreDownerBean(StoreDownerBean storeDownerBean) {
@@ -66,7 +69,7 @@ public class StoreRvAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         int type=getItemViewType(position);
 
@@ -86,6 +89,19 @@ public class StoreRvAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
                 upperRvAdapter.setStoreUpperBean(storeUpperBean.getData().getItems().get(position/2));
 
+                //跳跃到指定act
+                //这里 interpostion指的是横向的第几位rv中的大数据 与本类中position,小数据第几行不一样 大不一样
+                upperRvAdapter.setItemClick(new RvItemClick() {
+                    @Override
+                    public void clickMe(int interPostion) {
+                        Intent intent=new Intent(context, SecondStoreAct.class);
+                        StoreUpperBean.DataBean.ItemsBeanX toDetailBean=storeUpperBean.getData().getItems().get(position/2);
+
+                        intent.putExtra("store",toDetailBean);
+                        intent.putExtra("num",interPostion);
+                        context.startActivity(intent);
+                    }
+                });
                 break;
             case GRV:
 
@@ -93,7 +109,7 @@ public class StoreRvAdapter extends RecyclerView.Adapter<MyViewHolder> {
                 holder.drawImage(itemsBean.getCover_image_url(),R.id.iv_storedowner_cover);
                 holder.writeText(itemsBean.getShort_description(),R.id.tv_storedowner_title);
                 holder.writeText(itemsBean.getTitle(),R.id.tv_storedowner_shortdescription);
-
+                holder.writeText(itemsBean.getSkus().get(0).getPrice(),R.id.tv_storedowner_price);
                 break;
         }
 

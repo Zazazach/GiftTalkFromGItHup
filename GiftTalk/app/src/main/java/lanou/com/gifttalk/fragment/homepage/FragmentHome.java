@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import lanou.com.gifttalk.R;
 import lanou.com.gifttalk.activity.homepage.SearchAct;
 import lanou.com.gifttalk.adaptergroup.homepage.FragmentAdapter;
-import lanou.com.gifttalk.bean.homepage.FRChildBean;
-import lanou.com.gifttalk.bean.homepage.FRTitleBean;
+import lanou.com.gifttalk.bean.homepage.ChildBean;
+import lanou.com.gifttalk.bean.homepage.TitleBean;
 import lanou.com.gifttalk.finaldata.Http;
 import lanou.com.gifttalk.parser.ParseMethod;
 import lanou.com.gifttalk.parser.ParserTool;
@@ -31,12 +31,12 @@ public class FragmentHome extends Fragment {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private FRChildBean bean;
+    private ChildBean bean;
     private EditText searchEt;
 
     private FragmentAdapter adapter;
     private View v;
-    private ArrayList<FRTitleBean.DataBean.ChannelsBean> list;
+    private ArrayList<TitleBean.DataBean.ChannelsBean> list;
     private static final String TAG = "FragmentHome";
 
     @Nullable
@@ -63,19 +63,19 @@ public class FragmentHome extends Fragment {
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
 
-        ParserTool.getInstance().praser(Http.HOME_GREAT, FRChildBean.class, new ParseMethod<FRChildBean>() {
+        ParserTool.getInstance().praser(Http.HOME_GREAT, ChildBean.class, new ParseMethod<ChildBean>() {
             @Override
-            public void onSucceed(FRChildBean something) {
+            public void onSucceed(ChildBean something) {
 
-                adapter.setList((ArrayList<FRChildBean.DataBean.ItemsBean>) something.getData().getItems());
+                adapter.setList((ArrayList<ChildBean.DataBean.ItemsBean>) something.getData().getItems());
             }
         });
 
 
-        ParserTool.getInstance().praser(Http.HOME_TITLE, FRTitleBean.class, new ParseMethod<FRTitleBean>() {
+        ParserTool.getInstance().praser(Http.HOME_TITLE, TitleBean.class, new ParseMethod<TitleBean>() {
             @Override
-            public void onSucceed(FRTitleBean something) {
-                list = (ArrayList<FRTitleBean.DataBean.ChannelsBean>) something.getData().getChannels();
+            public void onSucceed(TitleBean something) {
+                list = (ArrayList<TitleBean.DataBean.ChannelsBean>) something.getData().getChannels();
                 Log.e(TAG, "onSucceed: " + list.size());
 
                 adapter.setTitleList(list);

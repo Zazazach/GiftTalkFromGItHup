@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lanou.com.gifttalk.R;
-import lanou.com.gifttalk.bean.homepage.FRChildBean;
+import lanou.com.gifttalk.bean.homepage.ChildBean;
 
 /**
  * Created by dllo on 17/2/15.
@@ -25,7 +25,7 @@ import lanou.com.gifttalk.bean.homepage.FRChildBean;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
-    private List<FRChildBean.DataBean.ItemsBean> list;
+    private List<ChildBean.DataBean.ItemsBean> list;
     private Context context;
     private int idType;
     private ArrayList<String> imageUrls;
@@ -43,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         notifyDataSetChanged();
     }
 
-    public void setList(List<FRChildBean.DataBean.ItemsBean> list) {
+    public void setList(List<ChildBean.DataBean.ItemsBean> list) {
         this.list = list;
         notifyDataSetChanged();
     }

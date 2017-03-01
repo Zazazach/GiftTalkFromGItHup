@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 
-import lanou.com.gifttalk.bean.itempage.FRItemTitleBean;
+import lanou.com.gifttalk.bean.itempage.ItemTitleBean;
 import lanou.com.gifttalk.fragment.itempage.FragmentItemChild;
 
 /**
@@ -17,14 +17,14 @@ import lanou.com.gifttalk.fragment.itempage.FragmentItemChild;
 public class FragmentItemAdapter extends FragmentStatePagerAdapter {
 
     private Context context;
-    private static ArrayList<FRItemTitleBean.DataBean.RanksBean> list;
+    private static ArrayList<ItemTitleBean.DataBean.RanksBean> list;
 
     public FragmentItemAdapter(FragmentManager fm,Context context) {
         super(fm);
         this.context=context;
     }
 
-    public void setList(ArrayList<FRItemTitleBean.DataBean.RanksBean> list) {
+    public void setList(ArrayList<ItemTitleBean.DataBean.RanksBean> list) {
         this.list = list;
         notifyDataSetChanged();
     }

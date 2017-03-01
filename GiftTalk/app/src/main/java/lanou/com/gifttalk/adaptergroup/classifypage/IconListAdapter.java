@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import lanou.com.gifttalk.R;

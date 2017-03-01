@@ -18,9 +18,11 @@
         android:layout_height="27dp"
         android:layout_gravity="center"
         android:hint="搜索单品、攻略"
-        android:textSize="12sp"
+        android:textSize="10sp"
         android:drawablePadding="5dp"
         android:paddingLeft="120dp"
+        android:paddingTop="0dp"
+        android:layout_margin="10dp"
         android:background="@drawable/fragmenthome_edittext"
         android:drawableLeft="@mipmap/nav_bar_icon_search_dark"/>
 
