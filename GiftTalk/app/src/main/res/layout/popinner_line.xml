@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/tv_popinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="大号"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@drawable/popcheck"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"/>
+
+
+</LinearLayout>
