@@ -5,15 +5,19 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import cn.sharesdk.framework.ShareSDK;
 import lanou.com.gifttalk.R;
+import lanou.com.gifttalk.activity.minepage.LoadFragment;
 import lanou.com.gifttalk.fragment.classifypage.FragmentClassify;
 import lanou.com.gifttalk.fragment.homepage.FragmentHome;
 import lanou.com.gifttalk.fragment.itempage.FragmentItem;
 import lanou.com.gifttalk.fragment.minepage.FragmentMine;
 import lanou.com.gifttalk.fragment.storepage.FragmentStore;
+import lanou.com.gifttalk.greendao.PublicTool;
 
 /**
  * Created by dllo on 17/2/10.
@@ -30,6 +34,9 @@ public class ActMajor extends AppCompatActivity implements RadioGroup.OnCheckedC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actmajor_layout);
+
+
+
         radioGroup= (RadioGroup) findViewById(R.id.rg_actmajor);
         home= (RadioButton) findViewById(R.id.rb_home);
 
@@ -66,8 +73,12 @@ public class ActMajor extends AppCompatActivity implements RadioGroup.OnCheckedC
 
                 break;
             case R.id.rb_mine:
-                transaction.replace(R.id.fl_actmajor,new FragmentMine());
-
+                int BUILD_TYPE=1;
+                if (PublicTool.getInstance().isExist(BUILD_TYPE)){
+                    transaction.replace(R.id.fl_actmajor,new LoadFragment());
+                }else {
+                    transaction.replace(R.id.fl_actmajor, new FragmentMine());
+                }
                 break;
 
         }

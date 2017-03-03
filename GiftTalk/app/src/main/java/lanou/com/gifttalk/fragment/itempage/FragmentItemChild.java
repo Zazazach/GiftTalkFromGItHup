@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import de.greenrobot.event.EventBus;
 import lanou.com.gifttalk.R;
 import lanou.com.gifttalk.activity.itempage.SecondLevelAct;
 import lanou.com.gifttalk.adaptergroup.itempage.FragmentItemAdapter;
@@ -34,6 +35,7 @@ public class FragmentItemChild extends Fragment {
     private ItemChildBean childBean;
 
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,7 +55,7 @@ public class FragmentItemChild extends Fragment {
 
 
 
-        Bundle bundle=getArguments();
+        final Bundle bundle=getArguments();
         int id=bundle.getInt("id");
         final int postion=bundle.getInt("pos");
 
@@ -83,6 +85,7 @@ public class FragmentItemChild extends Fragment {
                 recyclerView.setAdapter(adapter);
 
 
+
                 adapter.setClicker(new ItemClicker() {
                     @Override
                     public void itemClicker(int postion) {
@@ -96,6 +99,7 @@ public class FragmentItemChild extends Fragment {
                 });
             }
         });
+
 
 
 

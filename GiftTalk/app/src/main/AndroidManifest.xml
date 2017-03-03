@@ -36,8 +36,11 @@
         <activity android:name=".activity.itempage.SecondLevelAct"></activity>
         <activity android:name=".activity.itempage.PurchaseAct"></activity>
         <activity android:name=".activity.storepage.SecondStoreAct"></activity>
+        <activity android:name=".activity.minepage.LoadAct"></activity>
 
-        <activity android:name=".activity.minepage.MobUIShell" android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" >
@@ -61,9 +64,9 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>></activity>
+            </intent-filter>
 
-
+        </activity>
     </application>
 
 </manifest>

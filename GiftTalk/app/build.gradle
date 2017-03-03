@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -16,6 +16,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    greendao {
+        schemaVersion 1
+        targetGenDir 'src/main/java'
     }
 }
 
@@ -40,4 +45,6 @@ dependencies {
     compile 'jp.wasabeef:glide-transformations:2.0.0'
     compile 'com.github.userswlwork:pull-to-refresh:1.0.0'
     compile 'de.greenrobot:eventbus:3.0.0-beta1'
+    compile files('libs/ShareSDK-QQ-2.8.1.jar')
+    compile 'org.greenrobot:greendao:3.2.0'
 }
