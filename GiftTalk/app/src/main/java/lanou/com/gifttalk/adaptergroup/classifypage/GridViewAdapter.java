@@ -1,6 +1,8 @@
 package lanou.com.gifttalk.adaptergroup.classifypage;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import lanou.com.gifttalk.R;
+import lanou.com.gifttalk.activity.classifypage.SpecificAct;
 import lanou.com.gifttalk.bean.classifypage.IndividualityBean;
 
 /**
@@ -52,7 +55,7 @@ public class GridViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         GridHolder holder=null;
         if (convertView==null){
             convertView= LayoutInflater.from(context).inflate(R.layout.class_gridview_line,parent,false);
@@ -64,6 +67,15 @@ public class GridViewAdapter extends BaseAdapter {
         holder.iconName.setText(bean.getSubcategories().get(position).getName());
         Glide.with(context).load(bean.getSubcategories().get(position).getIcon_url()).into(holder.iconPic);
 
+        holder.iconPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(context, SpecificAct.class);
+                intent.putExtra("icon", bean.getSubcategories().get(position));
+
+                context.startActivity(intent);
+            }
+        });
         return convertView;
     }
 

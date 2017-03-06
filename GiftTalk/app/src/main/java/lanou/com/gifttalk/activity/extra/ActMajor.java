@@ -5,13 +5,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import cn.sharesdk.framework.ShareSDK;
 import lanou.com.gifttalk.R;
-import lanou.com.gifttalk.activity.minepage.LoadFragment;
+import lanou.com.gifttalk.fragment.minepage.LoadFragment;
 import lanou.com.gifttalk.fragment.classifypage.FragmentClassify;
 import lanou.com.gifttalk.fragment.homepage.FragmentHome;
 import lanou.com.gifttalk.fragment.itempage.FragmentItem;

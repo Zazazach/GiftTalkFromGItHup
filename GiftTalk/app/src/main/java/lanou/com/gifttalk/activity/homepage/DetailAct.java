@@ -87,6 +87,7 @@ public class DetailAct extends BaseActivity {
 
         webView.setMode(PullToRefreshBase.Mode.BOTH);
 
+
         webView.getRefreshableView().setWebViewClient(new WebViewClient(){
 
             @Override

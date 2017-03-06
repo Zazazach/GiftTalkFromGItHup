@@ -1,8 +1,6 @@
 package lanou.com.gifttalk.fragment.minepage;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,9 +20,6 @@ import cn.sharesdk.framework.ShareSDK;
 
 import cn.sharesdk.tencent.qq.QQ;
 import lanou.com.gifttalk.R;
-import lanou.com.gifttalk.activity.extra.MyApp;
-import lanou.com.gifttalk.activity.minepage.LoadAct;
-import lanou.com.gifttalk.activity.minepage.LoadFragment;
 import lanou.com.gifttalk.greendao.BuildTypeBean;
 import lanou.com.gifttalk.greendao.PublicTool;
 

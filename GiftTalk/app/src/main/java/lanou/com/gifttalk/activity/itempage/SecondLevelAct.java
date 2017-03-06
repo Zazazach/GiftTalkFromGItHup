@@ -6,12 +6,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.tencent.qq.QQ;
 import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
 import de.greenrobot.event.ThreadMode;
@@ -24,6 +29,8 @@ import lanou.com.gifttalk.bean.itempage.ItemChildBean;
 import lanou.com.gifttalk.fragment.itempage.SecondLevelFragmentLeft;
 import lanou.com.gifttalk.fragment.itempage.SecondLevelFragmentRt;
 import lanou.com.gifttalk.fragment.itempage.SencondLevelFragmentMid;
+import lanou.com.gifttalk.greendao.CollectTool;
+import lanou.com.gifttalk.greendao.MyCollect;
 
 /**
  * Created by dllo on 17/2/24.
@@ -38,10 +45,14 @@ public class SecondLevelAct extends BaseActivity {
     private TabLayout tabLayout;
     private EventBus eventBus;
     private ItemChildBean.DataBean.ItemsBean itemsBean;
+    private CheckBox like;
+    private MyCollect collect;
+    private MyCollect stateCollect;
 
 
     @Override
     public int bindLayout() {
+        ShareSDK.initSDK(this);
         return R.layout.secondlevel_layout;
     }
 
@@ -52,6 +63,8 @@ public class SecondLevelAct extends BaseActivity {
         intent = getIntent();
         list=new ArrayList<>();
         imageView= (ImageView) findViewById(R.id.tv_secondlevel_back);
+        like= (CheckBox) findViewById(R.id.cb_secondlevel_collect);
+
 //        EventBus.getDefault().register(this);
         EventBus.getDefault().register(this);
 
@@ -61,20 +74,22 @@ public class SecondLevelAct extends BaseActivity {
     @Override
     public void initData() {
         itemsBean = intent.getParcelableExtra("bean");
-        ItemChildBean bean=intent.getParcelableExtra("bean2");
-        SecondLevelFragmentLeft left=new SecondLevelFragmentLeft();
+        final ItemChildBean bean = intent.getParcelableExtra("bean2");
+
+
+        SecondLevelFragmentLeft left = new SecondLevelFragmentLeft();
         left.setItemsBean(itemsBean);
         left.setBean(bean);
 
 
-        SencondLevelFragmentMid mid=new SencondLevelFragmentMid();
+        SencondLevelFragmentMid mid = new SencondLevelFragmentMid();
         mid.setUrl(itemsBean.getUrl());
 
         list.add(left);
         list.add(mid);
         list.add(new SecondLevelFragmentRt());
 
-        adapter=new MyViewAdapter(getSupportFragmentManager(),this);
+        adapter = new MyViewAdapter(getSupportFragmentManager(), this);
         adapter.setList(list);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -90,18 +105,67 @@ public class SecondLevelAct extends BaseActivity {
         findViewById(R.id.tv_secondlevel_taobao).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SecondLevelAct.this,PurchaseAct.class);
-                Log.d("SecondLevelAct", (itemsBean.getPurchase_url()==null)+"");
+                Intent intent = new Intent(SecondLevelAct.this, PurchaseAct.class);
+                Log.d("SecondLevelAct", (itemsBean.getPurchase_url() == null) + "");
                 intent.putExtra("purchase", itemsBean.getPurchase_url());
                 startActivity(intent);
             }
         });
 
+        Platform qzone = ShareSDK.getPlatform(QQ.NAME);
+
+        String share_url = itemsBean.getName();
+        collect = new MyCollect();
+        collect.setUrl(share_url);
 
 
+        if (qzone.isAuthValid()) {
+
+            //插入对象 并且查重
+            for (MyCollect myCollect : CollectTool.getInstance().queryData()) {
+                if (myCollect.getUrl().equals(share_url)) {
+
+                    like.setChecked(true);
+
+                }
+            }
+
+            like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    if (isChecked) {
+                        CollectTool.getInstance().insertData(collect);
+
+                    } else {
+                        CollectTool.getInstance().deleteData(collect);
+                    }
+
+                }
+            });
 
 
+        } else {
+            like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+                    buttonView.setChecked(false);
+                    Toast.makeText(SecondLevelAct.this, "请您先登录,再瞎点", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+
+
+//        //测试zhuan专用 用后删除
+//   findViewById(R.id.tv_secondlevel_share).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                CollectTool.getInstance().deleteAll();
+//                notifyAll();
+//            }
+//        });
     }
 
     @Subscribe(threadMode = ThreadMode.MainThread)
@@ -116,8 +180,7 @@ public class SecondLevelAct extends BaseActivity {
 
         Log.d("SecondLevelAct", "length:**" + floatBean.getAlpha());
 
-        //覆盖一直没有达成
-        // TODO 覆盖一直没有达成
+
 
     }
 

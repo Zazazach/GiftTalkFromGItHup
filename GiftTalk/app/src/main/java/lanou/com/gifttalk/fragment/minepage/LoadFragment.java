@@ -1,10 +1,11 @@
-package lanou.com.gifttalk.activity.minepage;
+package lanou.com.gifttalk.fragment.minepage;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ import cn.sharesdk.framework.ShareSDK;
 
 import cn.sharesdk.tencent.qq.QQ;
 import lanou.com.gifttalk.R;
+import lanou.com.gifttalk.adaptergroup.minepage.RecyclerAdapter;
 import lanou.com.gifttalk.fragment.minepage.FragmentMine;
 import lanou.com.gifttalk.greendao.BuildTypeBean;
 import lanou.com.gifttalk.greendao.PublicTool;
@@ -42,6 +44,7 @@ public class LoadFragment extends Fragment{
     private PlatformDb platDB;
     private ImageView icon;
     private TextView name;
+    private RecyclerAdapter adapter;
 
     @Override
     public void onAttach(Context context) {
@@ -61,6 +64,7 @@ public class LoadFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
         icon= (ImageView) view.findViewById(R.id.profile_head);
         name= (TextView) view.findViewById(R.id.profile_name);
+        recyclerView= (RecyclerView) view.findViewById(R.id.rv_load);
     }
 
     @Override
@@ -107,6 +111,10 @@ public class LoadFragment extends Fragment{
             name.setText(PublicTool.getInstance().queryNameData());
 
         }
+
+        adapter=new RecyclerAdapter(getContext());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
 
 
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -80,8 +81,7 @@ public class IconListAdapter extends BaseAdapter {
         gridViewAdapter.setBean(bean.getData().getCategories().get(position));
         holder.gridView.setAdapter(gridViewAdapter);
         holder.gridView.setNumColumns(3);
-
-
+        holder.title.setText(bean.getData().getCategories().get(position).getName());
 
 
 
@@ -91,10 +91,12 @@ public class IconListAdapter extends BaseAdapter {
     class  InnerMyHolder {
         GridView gridView;
         View item;
+        TextView title;
 
         public InnerMyHolder(View item) {
             this.item = item;
             gridView= (GridView) item.findViewById(R.id.gv_right_line);
+            title= (TextView) item.findViewById(R.id.tv_lv_right);
         }
     }
 }

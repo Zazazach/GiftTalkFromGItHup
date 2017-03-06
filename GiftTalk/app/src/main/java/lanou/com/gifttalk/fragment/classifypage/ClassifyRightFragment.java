@@ -33,7 +33,7 @@ public class ClassifyRightFragment extends Fragment {
     private TitleListAdapter adapter;
     private IconListAdapter iconListAdapter;
     private List<String> titleList,iconList;
-    private IndividualityBean bean=new IndividualityBean();
+    private IndividualityBean bean;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

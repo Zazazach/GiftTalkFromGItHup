@@ -151,7 +151,7 @@ public class FragmentHomeChild extends Fragment {
                 Intent intent=new Intent(getContext(), DetailAct.class);
          //       intent.putExtra("uuu",childBean);
                 Log.e(TAG, "toDetail: " +( childBean.getData()==null));
-                //包裹化没包裹上
+
 
                 intent.putExtra("url",childBean);
                 intent.putExtra("pos",postion);

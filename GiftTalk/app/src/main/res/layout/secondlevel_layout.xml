@@ -12,9 +12,6 @@
         android:layout_weight="9.7">
 
 
-
-
-
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_secondlevel"
             android:layout_width="match_parent"
@@ -75,18 +72,32 @@
         android:layout_weight="1.2"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_secondlevel_favourite"
+        <!--<TextView-->
+            <!--android:id="@+id/tv_secondlevel_favourite"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1.6"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:drawableTop="@mipmap/ic_action_item_favourite_normal"-->
+            <!--android:text="喜欢"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingTop="5dp"-->
+            <!--android:drawablePadding="1dp"-->
+            <!--android:textSize="12.5sp"-->
+           <!--/>-->
+
+        <CheckBox
+            android:id="@+id/cb_secondlevel_collect"
             android:layout_width="0dp"
-            android:layout_weight="1.6"
             android:layout_height="match_parent"
-            android:drawableTop="@mipmap/ic_action_item_favourite_normal"
+            android:layout_weight="1.6"
+            android:drawableTop="@drawable/check_drawable"
             android:text="喜欢"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:drawablePadding="1dp"
+            android:paddingTop="6dp"
             android:textSize="12.5sp"
-           />
+            android:button="@null"
+            android:textColor="#1f1f1f"
+            />
 
         <TextView
             android:id="@+id/tv_secondlevel_share"
@@ -99,6 +110,7 @@
             android:paddingTop="5dp"
             android:drawablePadding="2.2dp"
             android:textSize="12.5sp"
+            android:textColor="#1f1f1f"
             />
 
         <TextView

@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="900dp">
+    android:layout_height="900dp"
+    android:background="#ffffff">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:orientation="horizontal">
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="3"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:background="#343434"/>
+        <TextView
+            android:id="@+id/tv_lv_right"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+            android:text="热门礼物"
+            android:textColor="#343434"
+            android:gravity="center"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="3"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorPrimaryDark"/>
+
+    </LinearLayout>
 
     <GridView
         android:id="@+id/gv_right_line"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="5.44">
 
     </GridView>
 

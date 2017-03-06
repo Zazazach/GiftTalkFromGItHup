@@ -135,7 +135,6 @@ public class SecondStoreAct extends BaseActivity {
         });
 
 
-
         //底部弹出popupwindow
         purchase.setOnClickListener(new View.OnClickListener() {
             @Override
